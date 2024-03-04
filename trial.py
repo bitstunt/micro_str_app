@@ -9,6 +9,9 @@ sidebar.slider(":blue[Sigma]", min_value=0.0, max_value=5.0, value=1.0, step=0.1
 
 data = st.file_uploader('Upload your microstructure')
 
+def segment(image, seg_map):
+    st.image(run(image, seg_map))
+
 if data is not None:
     col1, col2 = st.columns(2)
     col1.image(data)
@@ -19,4 +22,4 @@ if data is not None:
         superpixels, seg_map = generate_superpixels(image, st.session_state.scale, st.session_state.sigma)
         col2.image(superpixels)
         col2.write("Superpixels marked by boundaries")
-    st.button("Segment Image", on_click=st.write("Hi"))
+    st.button("Segment Image", on_click=segment(image, seg_map))
