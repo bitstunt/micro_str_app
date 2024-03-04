@@ -184,11 +184,11 @@ class MyNet(nn.Module):
 
 ## Arguments
 class Args(object):
-    train_epoch = 1000 ## training iteration T ##
+    train_epoch = 300 ## training iteration T ##
     mod_dim1 = 64  #
-    mod_dim2 =100 #
+    mod_dim2 = 6 #
     gpu_id =0
-    min_label_num = 3  # if the label number small than it, break loop
+    min_label_num = 2  # if the label number small than it, break loop
     max_label_num = 256  # if the label number small than it, start to show result image.
 
 
@@ -252,7 +252,6 @@ def run(np_image, seg_map):
 
         '''generating segmented mask'''
         un_label = np.unique(im_target)
-        print(batch_idx, len(un_label), loss.item())
         if len(un_label) <= args.min_label_num:
             break
 
