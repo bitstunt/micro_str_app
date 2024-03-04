@@ -19,4 +19,4 @@ if data is not None:
         superpixels, seg_map = generate_superpixels(image, st.session_state.scale, st.session_state.sigma)
         col2.image(superpixels)
         col2.write("Superpixels marked by boundaries")
-    st.button("Segment Image", on_click=st.image(run(image, seg_map)))
+    st.button("Segment Image", on_click=st.write("Hi"))
